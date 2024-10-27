@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <Extern href="stdidcmd.h"/>
+  <Extern href="vsshlids.h"/>
+  <Include href="KnownImageIds.vsct"/>
+  <Include href="VSGlobals.vsct"/>
+
+  <Commands package="DTOGenerator">
+    <Groups>
+      <!-- Change the parent to context menu of folders in Solution Explorer -->
+      <Group guid="DTOGenerator" id="GenerateMenuGroup" priority="0x0600">
+        <Parent guid="guidSolutionExplorer" id="IDM_VS_CTXT_FOLDERNODE" />
+      </Group>
+    </Groups>
+
+    <Buttons>
+      <Button guid="DTOGenerator" id="GenerateCommand" priority="0x0100" type="Button">
+        <Parent guid="DTOGenerator" id="GenerateMenuGroup" />
+        <Icon guid="ImageCatalogGuid" id="MapToFolder" />
+        <CommandFlag>IconIsMoniker</CommandFlag>
+        <Strings>
+          <ButtonText>Generate DTOs</ButtonText>
+          <LocCanonicalName>.DTOGenerator.GenerateCommand</LocCanonicalName>
+        </Strings>
+      </Button>
+    </Buttons>
+  </Commands>
+
+  <Symbols>
+    <!-- Keep existing GUIDs for your extension -->
+    <GuidSymbol name="DTOGenerator" value="{f8810deb-4ff3-45a3-9fbe-d89bfcde5774}">
+      <IDSymbol name="GenerateMenuGroup" value="0x0001" />
+      <IDSymbol name="GenerateCommand" value="0x0100" />
+    </GuidSymbol>
+
+    <!-- Add Solution Explorer GUID for folder context -->
+    <GuidSymbol name="guidSolutionExplorer" value="{D309F791-903F-11D0-9EFC-00A0C911004F}" />
+  </Symbols>
+</CommandTable>
